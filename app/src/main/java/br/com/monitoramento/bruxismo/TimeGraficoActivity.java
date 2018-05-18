@@ -203,7 +203,7 @@ public class TimeGraficoActivity extends DemoBase implements
                                 new JsonTask().execute("http://192.168.4.1/mestrado/json3");
                             }
                         });
-                        Thread.sleep(1000*1);
+                        Thread.sleep(1000*1/8);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
