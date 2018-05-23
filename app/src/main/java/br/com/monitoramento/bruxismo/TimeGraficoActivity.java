@@ -80,7 +80,7 @@ public class TimeGraficoActivity extends DemoBase implements
         mChart.setHighlightPerDragEnabled(true);
 
         // if disabled, scaling can be done on x- and y-axis separately
-        mChart.setPinchZoom(true);
+        mChart.setPinchZoom(false);
 
         // set an alternative background color
         mChart.setBackgroundColor(Color.WHITE);
@@ -104,9 +104,11 @@ public class TimeGraficoActivity extends DemoBase implements
         xl.setTextColor(Color.WHITE);
         xl.setDrawGridLines(false);
         xl.setAvoidFirstLastClipping(true);
+        xl.setCenterAxisLabels(true);
         xl.setEnabled(true);
 
         YAxis leftAxis = mChart.getAxisLeft();
+        leftAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         leftAxis.setTypeface(mTfLight);
         leftAxis.setTextColor(Color.WHITE);
         leftAxis.setAxisMaximum(100f);
@@ -203,7 +205,7 @@ public class TimeGraficoActivity extends DemoBase implements
                                 new JsonTask().execute("http://192.168.4.1/mestrado/json3");
                             }
                         });
-                        Thread.sleep(1000*1/8);
+                        Thread.sleep(1000*1/2);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -212,40 +214,7 @@ public class TimeGraficoActivity extends DemoBase implements
         }.start();
     }
 
-//    private void feedMultiple() {
-//
-//        if (thread != null)
-//            thread.interrupt();
-//
-//        final Runnable runnable = new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                new GetLeitura(TimeGraficoActivity.this);
-//            }
-//        };
-//
-//        thread = new Thread(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                for (int i = 0; i < 1000; i++) {
-//
-//                    // Don't generate garbage runnables inside the loop.
-//                    runOnUiThread(runnable);
-//
-//                    try {
-//                        Thread.sleep(250);
-//                    } catch (InterruptedException e) {
-//                        // TODO Auto-generated catch block
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
-//
-//        thread.start();
-//    }
+
 private class JsonTask extends AsyncTask<String, String, String> {
 
     protected void onPreExecute() {
@@ -311,10 +280,20 @@ private class JsonTask extends AsyncTask<String, String, String> {
                 pd.dismiss();
             }*/
 //        txtJson.setText(result);
-        int index1 = result.indexOf(":");
-        int index2 = result.indexOf("}");
-        result = result.substring(index1+1,index2);
-        addEntry(Float.parseFloat(result));
+        int index1 = result.indexOf(":[");
+        int index2 = result.indexOf("]}");
+        result = result.substring(index1+2,index2);
+        String buffer = "";
+        for(char res : result.toCharArray()){
+            if(res != ',')
+                buffer += res;
+            else{
+                //Log.d("Valores Partidos: ", buffer);
+                addEntry(Float.parseFloat(buffer)/10);
+                buffer = "";
+            }
+
+        }
     }
 }
     @Override
