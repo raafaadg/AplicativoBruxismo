@@ -35,7 +35,7 @@ public class MainActivity2 extends AppCompatActivity {
         btnHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new JsonTask().execute("http://192.168.4.1/mestrado/json3");
+                new JsonTask().execute("http://192.168.4.1/edit");
             }
         });
 
@@ -77,7 +77,6 @@ public class MainActivity2 extends AppCompatActivity {
                     buffer.append(line+"\n");
                     Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
                 }
-                //Log.d("Ver se funfa: ", buffer.cep.toString());   //here u ll get whole response...... :-)
 
                 return buffer.toString();
 

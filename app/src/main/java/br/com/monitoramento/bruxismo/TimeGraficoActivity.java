@@ -202,7 +202,7 @@ public class TimeGraficoActivity extends DemoBase implements
                                 //startTime = System.currentTimeMillis();
                                 //new GetLeitura(TimeGraficoActivity.this);
 //                                addEntry((float) (Math.random() * 40) + 30f);
-                                new JsonTask().execute("http://192.168.4.1/mestrado/json3");
+                                new JsonTask().execute("http://192.168.4.1/edit");
                             }
                         });
                         Thread.sleep(1000*1/2);

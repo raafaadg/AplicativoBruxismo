@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_emg_grafico;
     TextView tv_emg_controle;
     TextView tv_emg_compartilar;
+    TextView tv_emg_teste;
 
     CadastroActivity cadastro = new CadastroActivity();
     @Override
@@ -55,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(numbersIntent);
             }
         });
+
+        tv_emg_teste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent numbersIntent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(numbersIntent);
+            }
+        });
     }
 
     private void loadViews() {
@@ -62,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         tv_emg_grafico=(TextView) findViewById(R.id.grafico);
         tv_emg_controle=(TextView) findViewById(R.id.controle);
         tv_emg_compartilar=(TextView) findViewById(R.id.compartilhar);
+        tv_emg_teste=(TextView) findViewById(R.id.teste);
 
     }
 

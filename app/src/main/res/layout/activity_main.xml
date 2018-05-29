@@ -36,6 +36,12 @@
             style="@style/CategoryStyle"
             android:background="#A00"
             android:text="Compartilhar" />
+        <TextView
+            android:id="@+id/teste"
+            style="@style/CategoryStyle"
+            android:background="#7520"
+            android:layout_marginBottom="20dp"
+            android:text="Teste" />
 
     </LinearLayout>
 
