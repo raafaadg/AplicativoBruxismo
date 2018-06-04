@@ -125,13 +125,13 @@ public class TimeGraficoActivity extends DemoBase implements
 
     public void setInfo(GetLeituraResponse info) {
         Context contexto = getApplicationContext();
-        //for(String s : info.valor)
-            addEntry(Float.parseFloat(info.valor));
+        for(String s : info.valor)
+            addEntry(Float.parseFloat(s));
 
         //mChart.invalidate();
         stopTime = System.currentTimeMillis();
         elapsedTime = stopTime - startTime;
-        Toast.makeText(contexto, info.valor, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(contexto, info.valor, Toast.LENGTH_SHORT).show();
         Log.e("Tempo Exeução", String.valueOf(elapsedTime));
     }
 

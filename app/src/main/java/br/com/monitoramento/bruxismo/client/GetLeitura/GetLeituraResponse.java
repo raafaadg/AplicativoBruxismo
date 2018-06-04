@@ -24,11 +24,11 @@ import java.util.List;
 // Use esse site pra verificar se o JSON é válido: https://jsonformatter.curiousconcept.com/
 // Você usa uma classe como essa ↓ pra receber esses dados
 public class GetLeituraResponse {
-    public String comando;
-    public String nome;
-    public String idade;
-    public String peso;
-    public String tipo;
-    public String valor;
-//    public List<String> valor;
+//    public String comando;
+//    public String nome;
+//    public String idade;
+//    public String peso;
+//    public String tipo;
+//    public String valor;
+    public List<String> valor;
 }

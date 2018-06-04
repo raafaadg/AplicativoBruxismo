@@ -1,6 +1,7 @@
 package br.com.monitoramento.bruxismo;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +18,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import br.com.monitoramento.bruxismo.client.GetLeitura.GetLeitura;
+import br.com.monitoramento.bruxismo.client.GetLeitura.GetLeituraResponse;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -38,7 +42,7 @@ public class MainActivity2 extends AppCompatActivity {
                 new JsonTask().execute("http://192.168.4.1/edit");
             }
         });
-
+//        runThread();
 
     }
 
@@ -73,10 +77,15 @@ public class MainActivity2 extends AppCompatActivity {
                 StringBuffer buffer = new StringBuffer();
                 String line = "";
 
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line+"\n");
-                    Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
-                }
+                line = reader.readLine();
+                txtJson.setText(line);
+//                String total = "";
+//                while (line != null){
+//                    total += line;
+//                    line = reader.readLine();
+//                    //buffer.append(line+"\n");
+//                    //Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
+//                }
 
                 return buffer.toString();
 
@@ -100,6 +109,8 @@ public class MainActivity2 extends AppCompatActivity {
             return null;
         }
 
+
+
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
@@ -112,5 +123,33 @@ public class MainActivity2 extends AppCompatActivity {
 //            addEntry(Float.parseFloat(result));
             txtJson.setText(result);
         }
+    }
+
+    public void setInfo(GetLeituraResponse info) {
+        Context contexto = getApplicationContext();
+        for(String s : info.valor)
+            txtJson.setText(s);
+
+    }
+    private void runThread() {
+
+        new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                new GetLeitura(MainActivity2.this);
+                            }
+                        });
+                        Thread.sleep(1000*10);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }.start();
     }
 }
