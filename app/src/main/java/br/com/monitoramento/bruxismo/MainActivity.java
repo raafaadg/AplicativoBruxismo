@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         tv_emg_grafico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent numbersIntent = new Intent(MainActivity.this, TimeGraficoActivity.class);
+                Intent numbersIntent = new Intent(MainActivity.this, GraficoActivity.class);
                 startActivity(numbersIntent);
             }
         });

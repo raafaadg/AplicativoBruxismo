@@ -26,7 +26,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     TextView btnHit;
     TextView txtJson;
-    //ProgressDialog pd;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new JsonTask().execute("http://192.168.4.1/edit");
+//                new JsonTask().execute("http://192.168.4.1/mestrado/6");
             }
         });
 //        runThread();
@@ -77,15 +78,15 @@ public class MainActivity2 extends AppCompatActivity {
                 StringBuffer buffer = new StringBuffer();
                 String line = "";
 
-                line = reader.readLine();
-                txtJson.setText(line);
-//                String total = "";
-//                while (line != null){
-//                    total += line;
-//                    line = reader.readLine();
-//                    //buffer.append(line+"\n");
-//                    //Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
-//                }
+//                line = reader.readLine();
+//                txtJson.setText(line);
+                //String total = "";
+                while ((line = reader.readLine())  != null){
+                    //total += line;
+                    //line = reader.readLine();
+                    buffer.append(line+"\n");
+                    Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
+                }
 
                 return buffer.toString();
 
@@ -117,9 +118,9 @@ public class MainActivity2 extends AppCompatActivity {
             /*if (pd.isShowing()){
                 pd.dismiss();
             }*/
-            int index1 = result.indexOf(":");
-            int index2 = result.indexOf("}");
-            result = result.substring(index1+1,index2);
+           // int index1 = result.indexOf(":");
+           // int index2 = result.indexOf("}");
+           // result = result.substring(index1+1,index2);
 //            addEntry(Float.parseFloat(result));
             txtJson.setText(result);
         }

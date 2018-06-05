@@ -1,5 +1,6 @@
 package br.com.monitoramento.bruxismo;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -10,7 +11,8 @@ import android.view.MenuItem;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.WindowManager;
-        import android.widget.SeekBar;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
         import android.widget.SeekBar.OnSeekBarChangeListener;
         import android.widget.TextView;
         import android.widget.Toast;
@@ -54,7 +56,7 @@ public class TimeGraficoActivity extends DemoBase implements
     private long startTime;
     private long stopTime ;
     private long elapsedTime ;
-
+    ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +121,10 @@ public class TimeGraficoActivity extends DemoBase implements
         rightAxis.setEnabled(false);
 
 
-        runThread();
+//        runThread();
+        new JsonTask().execute("http://192.168.4.1/edit");
+
+
     }
 
 
@@ -220,10 +225,10 @@ private class JsonTask extends AsyncTask<String, String, String> {
     protected void onPreExecute() {
         super.onPreExecute();
 
-            /*pd = new ProgressDialog(MainActivity2.this);
+            pd = new ProgressDialog(TimeGraficoActivity.this);
             pd.setMessage("Please wait");
             pd.setCancelable(false);
-            pd.show();*/
+            pd.show();
     }
 
     protected String doInBackground(String... params) {
@@ -276,13 +281,11 @@ private class JsonTask extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-            /*if (pd.isShowing()){
-                pd.dismiss();
-            }*/
+
 //        txtJson.setText(result);
-        int index1 = result.indexOf(":[");
-        int index2 = result.indexOf("]}");
-        result = result.substring(index1+2,index2);
+//        int index1 = result.indexOf(":[");
+//        int index2 = result.indexOf("]}");
+//        result = result.substring(index1+2,index2);
         String buffer = "";
         for(char res : result.toCharArray()){
             if(res != ',')
@@ -292,8 +295,11 @@ private class JsonTask extends AsyncTask<String, String, String> {
                 addEntry(Float.parseFloat(buffer)/10);
                 buffer = "";
             }
-
         }
+        if (pd.isShowing()){
+            pd.dismiss();
+        }
+
     }
 }
     @Override
