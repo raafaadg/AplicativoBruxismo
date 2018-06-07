@@ -22,9 +22,15 @@
         <TextView
             android:id="@+id/grafico"
             style="@style/CategoryStyle"
-            android:background="#16AFCA"
+            android:background="#FACE"
             android:layout_marginBottom="20dp"
             android:text="Gráfico" />
+        <TextView
+            android:id="@+id/online"
+            style="@style/CategoryStyle"
+            android:background="#16AFCA"
+            android:layout_marginBottom="20dp"
+            android:text="Online" />
         <TextView
             android:id="@+id/controle"
             style="@style/CategoryStyle"
@@ -35,12 +41,12 @@
             android:id="@+id/compartilhar"
             style="@style/CategoryStyle"
             android:background="#A00"
+            android:layout_marginBottom="20dp"
             android:text="Compartilhar" />
         <TextView
             android:id="@+id/teste"
             style="@style/CategoryStyle"
             android:background="#7520"
-            android:layout_marginBottom="20dp"
             android:text="Teste" />
 
     </LinearLayout>

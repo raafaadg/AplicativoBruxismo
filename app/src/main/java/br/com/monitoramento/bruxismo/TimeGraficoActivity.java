@@ -112,7 +112,7 @@ public class TimeGraficoActivity extends DemoBase implements
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         leftAxis.setTypeface(mTfLight);
-        leftAxis.setTextColor(Color.WHITE);
+        leftAxis.setTextColor(Color.BLACK);
         leftAxis.setAxisMaximum(100f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setDrawGridLines(true);
@@ -121,8 +121,8 @@ public class TimeGraficoActivity extends DemoBase implements
         rightAxis.setEnabled(false);
 
 
-//        runThread();
-        new JsonTask().execute("http://192.168.4.1/edit");
+        runThread();
+//        new JsonTask().execute("http://192.168.4.1/edit");
 
 
     }
@@ -134,10 +134,10 @@ public class TimeGraficoActivity extends DemoBase implements
             addEntry(Float.parseFloat(s));
 
         //mChart.invalidate();
-        stopTime = System.currentTimeMillis();
-        elapsedTime = stopTime - startTime;
-        //Toast.makeText(contexto, info.valor, Toast.LENGTH_SHORT).show();
-        Log.e("Tempo Exeução", String.valueOf(elapsedTime));
+//        stopTime = System.currentTimeMillis();
+//        elapsedTime = stopTime - startTime;
+//        //Toast.makeText(contexto, info.valor, Toast.LENGTH_SHORT).show();
+//        Log.e("Tempo Exeução", String.valueOf(elapsedTime));
     }
 
     private void addEntry(float valor) {
@@ -162,7 +162,7 @@ public class TimeGraficoActivity extends DemoBase implements
             mChart.notifyDataSetChanged();
 
             // limit the number of visible entries
-            mChart.setVisibleXRangeMaximum(120);
+            mChart.setVisibleXRangeMaximum(1000);
             // mChart.setVisibleYRange(30, AxisDependency.LEFT);
 
             // move to the latest entry
@@ -177,11 +177,11 @@ public class TimeGraficoActivity extends DemoBase implements
     private LineDataSet createSet() {
 
         LineDataSet set = new LineDataSet(null, "Dynamic Data");
-        set.setAxisDependency(AxisDependency.LEFT);
+        set.setAxisDependency(AxisDependency.RIGHT);
         set.setColor(ColorTemplate.getHoloBlue());
-        set.setCircleColor(Color.WHITE);
+        set.setCircleColor(Color.BLUE);
         set.setLineWidth(2f);
-        set.setCircleRadius(4f);
+        set.setCircleRadius(1f);
         set.setFillAlpha(65);
         set.setFillColor(ColorTemplate.getHoloBlue());
         set.setHighLightColor(Color.rgb(244, 117, 117));
@@ -204,13 +204,13 @@ public class TimeGraficoActivity extends DemoBase implements
                             @Override
                             public void run() {
                                 //Log.e("Tempo Exeução", "Iniciado");
-                                //startTime = System.currentTimeMillis();
+                                startTime = System.currentTimeMillis();
                                 //new GetLeitura(TimeGraficoActivity.this);
 //                                addEntry((float) (Math.random() * 40) + 30f);
-                                new JsonTask().execute("http://192.168.4.1/edit");
+                                new JsonTask().execute("http://192.168.4.1/mestrado/json3");
                             }
                         });
-                        Thread.sleep(1000*1/2);
+                        Thread.sleep(1000*1/10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -225,10 +225,10 @@ private class JsonTask extends AsyncTask<String, String, String> {
     protected void onPreExecute() {
         super.onPreExecute();
 
-            pd = new ProgressDialog(TimeGraficoActivity.this);
-            pd.setMessage("Please wait");
-            pd.setCancelable(false);
-            pd.show();
+//            pd = new ProgressDialog(TimeGraficoActivity.this);
+//            pd.setMessage("Please wait");
+//            pd.setCancelable(false);
+//            pd.show();
     }
 
     protected String doInBackground(String... params) {
@@ -283,9 +283,9 @@ private class JsonTask extends AsyncTask<String, String, String> {
         super.onPostExecute(result);
 
 //        txtJson.setText(result);
-//        int index1 = result.indexOf(":[");
-//        int index2 = result.indexOf("]}");
-//        result = result.substring(index1+2,index2);
+        int index1 = result.indexOf(":[");
+        int index2 = result.indexOf("]}");
+        result = result.substring(index1+2,index2);
         String buffer = "";
         for(char res : result.toCharArray()){
             if(res != ',')
@@ -296,10 +296,12 @@ private class JsonTask extends AsyncTask<String, String, String> {
                 buffer = "";
             }
         }
-        if (pd.isShowing()){
-            pd.dismiss();
-        }
-
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        Log.d("Tempo de Exibição", String.valueOf(elapsedTime));
+//        if (pd.isShowing()){
+//            pd.dismiss();
+//        }
     }
 }
     @Override
