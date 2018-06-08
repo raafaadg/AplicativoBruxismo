@@ -292,13 +292,14 @@ private class JsonTask extends AsyncTask<String, String, String> {
                 buffer += res;
             else{
                 //Log.d("Valores Partidos: ", buffer);
-                addEntry(Float.parseFloat(buffer)/10);
+                Log.d("Valor Gráfico", buffer);
+                addEntry(Float.parseFloat(buffer));
                 buffer = "";
             }
         }
-        stopTime = System.currentTimeMillis();
-        elapsedTime = stopTime - startTime;
-        Log.d("Tempo de Exibição", String.valueOf(elapsedTime));
+        //stopTime = System.currentTimeMillis();
+        //elapsedTime = stopTime - startTime;
+        //Log.d("Tempo de Exibição", String.valueOf(elapsedTime));
 //        if (pd.isShowing()){
 //            pd.dismiss();
 //        }
