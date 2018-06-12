@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri May 18 14:36:59 BRT 2018
+#Tue Jun 12 16:31:32 BRT 2018
 0.baseType=DIRECTORY
 0.base=C\:\\Users\\rafae\\Desktop\\AplicativoBruxismo\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 0.path=classes.dex

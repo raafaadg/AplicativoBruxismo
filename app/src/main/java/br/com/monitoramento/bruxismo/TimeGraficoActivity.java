@@ -208,9 +208,10 @@ public class TimeGraficoActivity extends DemoBase implements
                                 //new GetLeitura(TimeGraficoActivity.this);
 //                                addEntry((float) (Math.random() * 40) + 30f);
                                 new JsonTask().execute("http://192.168.4.1/mestrado/json3");
+//                                new GetLeitura(TimeGraficoActivity.this);
                             }
                         });
-                        Thread.sleep(1000*1/10);
+                        Thread.sleep(1000*1/50);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -292,7 +293,7 @@ private class JsonTask extends AsyncTask<String, String, String> {
                 buffer += res;
             else{
                 //Log.d("Valores Partidos: ", buffer);
-                Log.d("Valor Gráfico", buffer);
+                //Log.d("Valor Gráfico", buffer);
                 addEntry(Float.parseFloat(buffer));
                 buffer = "";
             }

@@ -42,6 +42,7 @@ public class GetLeitura extends CustomRequest {
 
             GetLeituraInterface client = ServiceGenerator.createService(GetLeituraInterface.class);
             //String coma = ((CadastroActivity) getContext()).getComando();
+//            String coma = "json3";
             String coma = "edit";
             Call<GetLeituraResponse> call = client.getLeitura(coma);
             call.enqueue(new Callback<GetLeituraResponse>() {
@@ -52,7 +53,7 @@ public class GetLeitura extends CustomRequest {
                         // Ler os dados aqui, eles vão estar em response.body()
                         dismissProgressDialog();
                         //((CadastroActivity) getContext()).setInfo(response.body());
-                        //((TimeGraficoActivity) getContext()).setInfo(response.body());
+//                        ((TimeGraficoActivity) getContext()).setInfo(response.body());
                         ((MainActivity2) getContext()).setInfo(response.body());
                         //Toast.makeText(getContext(), "Dado Aquisistado", Toast.LENGTH_SHORT).show();
                     } else if (response.code() == 401) {
