@@ -129,9 +129,9 @@ public class TimeGraficoActivity extends DemoBase implements
 
 
     public void setInfo(GetLeituraResponse info) {
-        Context contexto = getApplicationContext();
-        for(String s : info.valor)
-            addEntry(Float.parseFloat(s));
+//        Context contexto = getApplicationContext();
+//        for(String s : info.valor)
+//            addEntry(Float.parseFloat(s));
 
         //mChart.invalidate();
 //        stopTime = System.currentTimeMillis();
@@ -200,7 +200,6 @@ public class TimeGraficoActivity extends DemoBase implements
                 while (true) {
                     try {
                         runOnUiThread(new Runnable() {
-
                             @Override
                             public void run() {
                                 //Log.e("Tempo Exeução", "Iniciado");
@@ -211,7 +210,7 @@ public class TimeGraficoActivity extends DemoBase implements
 //                                new GetLeitura(TimeGraficoActivity.this);
                             }
                         });
-                        Thread.sleep(1000*1/50);
+                        Thread.sleep(1000*1/20);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

@@ -10,8 +10,8 @@ import retrofit2.http.Path;
  */
 
 public interface GetLeituraInterface {
-//    @GET("mestrado/{codigo}")
-    @GET("{codigo}")
+    @GET("mestrado/{codigo}")
+//    @GET("{codigo}")
     Call<GetLeituraResponse> getLeitura(@Path("codigo") String codigo);
 }
 

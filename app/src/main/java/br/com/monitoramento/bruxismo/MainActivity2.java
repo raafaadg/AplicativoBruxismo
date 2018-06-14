@@ -39,8 +39,11 @@ public class MainActivity2 extends AppCompatActivity {
         btnHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new JsonTask().execute("http://192.168.4.1/edit");
+//                new JsonTask().execute("http://192.168.4.1/edit");
 //                new JsonTask().execute("http://192.168.4.1/mestrado/6");
+                new JsonTask().execute("http://192.168.4.1/mestrado/tele");
+//                new GetLeitura(MainActivity2.this);
+
             }
         });
 //        runThread();
@@ -82,8 +85,6 @@ public class MainActivity2 extends AppCompatActivity {
 //                txtJson.setText(line);
                 //String total = "";
                 while ((line = reader.readLine())  != null){
-                    //total += line;
-                    //line = reader.readLine();
                     buffer.append(line+"\n");
                     Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
                 }
@@ -127,9 +128,10 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     public void setInfo(GetLeituraResponse info) {
-        Context contexto = getApplicationContext();
-        for(String s : info.valor)
-            txtJson.setText(s);
+//        Context contexto = getApplicationContext();
+//        for(String s : info.valor)
+//            txtJson.setText(s);
+//        txtJson.setText(info);
 
     }
     private void runThread() {

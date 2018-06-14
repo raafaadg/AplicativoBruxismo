@@ -43,7 +43,7 @@ public class GetLeitura extends CustomRequest {
             GetLeituraInterface client = ServiceGenerator.createService(GetLeituraInterface.class);
             //String coma = ((CadastroActivity) getContext()).getComando();
 //            String coma = "json3";
-            String coma = "edit";
+            String coma = "tele";
             Call<GetLeituraResponse> call = client.getLeitura(coma);
             call.enqueue(new Callback<GetLeituraResponse>() {
 
@@ -73,7 +73,6 @@ public class GetLeitura extends CustomRequest {
                     createMessageDialog(t.getMessage());
                     dismissProgressDialog();
                 }
-
             });
 
             super.request_call();

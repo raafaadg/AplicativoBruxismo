@@ -30,5 +30,9 @@ public class GetLeituraResponse {
 //    public String peso;
 //    public String tipo;
 //    public String valor;
-    public List<String> valor;
+//    public List<String> valor;
+    public String nomeSSID;
+    public float bateria;
+    public String nomeArquivo;
+    public int tamanhoArquivo;
 }

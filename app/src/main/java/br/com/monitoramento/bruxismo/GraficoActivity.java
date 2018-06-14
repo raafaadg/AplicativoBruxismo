@@ -128,7 +128,7 @@ public class GraficoActivity extends AppCompatActivity implements OnChartGesture
 
         // add data
 //        setData(100, 100);
-        new JsonTask().execute("http://192.168.4.1/edit");
+        new JsonTask().execute("http://192.168.4.1/mestrado/edit");
 
 //        mChart.setVisibleXRange(20);
 //        mChart.setVisibleYRange(20f, AxisDependency.LEFT);
