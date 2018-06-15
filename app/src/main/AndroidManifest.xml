@@ -73,6 +73,31 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
+        <activity
+            android:name=".SetupDadosActivity"
+            android:label="Setup Dados"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SetupStartActivity"/>
+        </activity>
+        <activity
+            android:name=".SetupStartActivity"
+            android:label="Setup Start"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+
+        <activity
+            android:name=".SetupOkActivity"
+            android:label="Setup Start"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SetupDadosActivity"/>
+        </activity>
 
         <activity
             android:name=".MainActivity2"
@@ -82,6 +107,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
+
 
     </application>
 

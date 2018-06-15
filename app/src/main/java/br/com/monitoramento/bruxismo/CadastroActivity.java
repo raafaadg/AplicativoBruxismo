@@ -75,25 +75,6 @@ public class CadastroActivity extends AppCompatActivity{
         new GetLeitura(CadastroActivity.this);
     }
 
-    private void startThread() {
-
-       runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    while (true) {
-                        Log.e("MyActivity", "Tempo");
-                        //executa();
-                        Log.e("MyActivity", "Rodando");
-                        Thread.sleep(1000 * 10);
-                    }
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-    }
 
     private void runThread() {
 

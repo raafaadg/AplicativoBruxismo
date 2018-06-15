@@ -11,13 +11,13 @@
         android:text="Button" />
 
     <Button
-        android:id="@+id/bt_iniciar"
+        android:id="@+id/bt_iniciar_moni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Iniciar" />
     <Button
-        android:id="@+id/telemetria"
+        android:id="@+id/bt_telemetria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

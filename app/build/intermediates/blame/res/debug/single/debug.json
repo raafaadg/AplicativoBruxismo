@@ -1260,6 +1260,10 @@
         "source": "C:\\Users\\rafae\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c1bded5ee456c9f4cafd42201f3a05ca\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
+        "merged": "C:\\Users\\rafae\\Desktop\\AplicativoBruxismo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_setup_start.xml.flat",
+        "source": "C:\\Users\\rafae\\Desktop\\AplicativoBruxismo\\app\\src\\main\\res\\layout\\activity_setup_start.xml"
+    },
+    {
         "merged": "C:\\Users\\rafae\\Desktop\\AplicativoBruxismo\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_action_tombstone.xml.flat",
         "source": "C:\\Users\\rafae\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c1bded5ee456c9f4cafd42201f3a05ca\\res\\layout\\notification_action_tombstone.xml"
     },
@@ -1386,6 +1390,10 @@
     {
         "merged": "C:\\Users\\rafae\\Desktop\\AplicativoBruxismo\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_btn_checkable.xml.flat",
         "source": "C:\\Users\\rafae\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.3.1.aar\\c1bded5ee456c9f4cafd42201f3a05ca\\res\\color-v23\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "C:\\Users\\rafae\\Desktop\\AplicativoBruxismo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_setup_dados.xml.flat",
+        "source": "C:\\Users\\rafae\\Desktop\\AplicativoBruxismo\\app\\src\\main\\res\\layout\\activity_setup_dados.xml"
     },
     {
         "merged": "C:\\Users\\rafae\\Desktop\\AplicativoBruxismo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
