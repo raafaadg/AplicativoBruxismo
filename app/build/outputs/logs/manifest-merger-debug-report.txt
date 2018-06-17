@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
-INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
-INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
-INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
+ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
+INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
+INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
+INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.3.1.aar\c1bded5ee456c9f4cafd42201f3a05ca\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\1641a04fc6c8925737b009372c96ecd0\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.3.1.aar\951a68f692185c455e30bc6a68f6ee89\AndroidManifest.xml:17:1-28:12
@@ -14,20 +14,20 @@ MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\rafae\.gr
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.3.1.aar\f182e9d771fb1fea0b64726c543111da\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.3.1.aar\0876c3112c3ecd3eb669f06539549762\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\support-compat-25.3.1.aar\52cf751e87445b4baccf70d3d419a444\AndroidManifest.xml:17:1-31:12
-INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
-INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
-INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
+INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
+INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
+INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
 	package
 		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:3:5-44
 		INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
+		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
 		INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-104:12
+		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:1-114:12
 		INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:2:11-69
@@ -40,7 +40,7 @@ ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifes
 	android:name
 		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:6:22-76
 application
-ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:8:5-102:19
+ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:8:5-112:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.3.1.aar\c1bded5ee456c9f4cafd42201f3a05ca\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.3.1.aar\c1bded5ee456c9f4cafd42201f3a05ca\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\rafae\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\1641a04fc6c8925737b009372c96ecd0\AndroidManifest.xml:9:5-20
@@ -157,14 +157,22 @@ ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifes
 		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:86:13-40
 	android:name
 		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:85:13-47
-activity#br.com.monitoramento.bruxismo.MainActivity2
+activity#br.com.monitoramento.bruxismo.SetupOkActivity
 ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:93:9-100:20
 	android:parentActivityName
 		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:96:13-55
 	android:label
-		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:95:13-34
+		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:95:13-40
 	android:name
-		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:94:13-42
+		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:94:13-44
+activity#br.com.monitoramento.bruxismo.MainActivity2
+ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:102:9-109:20
+	android:parentActivityName
+		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:105:13-55
+	android:label
+		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:104:13-34
+	android:name
+		ADDED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml:103:13-42
 uses-sdk
 INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\rafae\Desktop\AplicativoBruxismo\app\src\main\AndroidManifest.xml

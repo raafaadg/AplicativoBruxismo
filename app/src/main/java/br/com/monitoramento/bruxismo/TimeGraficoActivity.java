@@ -36,8 +36,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.SocketException;
 import java.net.URL;
 import java.sql.Time;
         import java.text.SimpleDateFormat;
@@ -57,6 +60,11 @@ public class TimeGraficoActivity extends DemoBase implements
     private long stopTime ;
     private long elapsedTime ;
     ProgressDialog pd;
+
+    String lText;
+    private static final int UDP_SERVER_PORT = 4210;
+    private static final int MAX_UDP_DATAGRAM_LEN = 1500;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,15 +210,26 @@ public class TimeGraficoActivity extends DemoBase implements
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                //Log.e("Tempo Exeução", "Iniciado");
-                                startTime = System.currentTimeMillis();
-                                //new GetLeitura(TimeGraficoActivity.this);
-//                                addEntry((float) (Math.random() * 40) + 30f);
-                                new JsonTask().execute("http://192.168.4.1/mestrado/json3");
+//                                new JsonTask().execute("http://192.168.4.1/mestrado/json3");
 //                                new GetLeitura(TimeGraficoActivity.this);
+                                byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
+                                DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
+                                DatagramSocket ds = null;
+                                try {
+                                    ds = new DatagramSocket(UDP_SERVER_PORT);
+                                    ds.receive(dp);
+                                    addEntry(Float.parseFloat(new String(dp.getData())));
+                                }catch (SocketException e){
+                                    e.printStackTrace();
+                                }catch (IOException e){
+                                    e.printStackTrace();
+                                }finally {
+                                    if(ds != null)
+                                        ds.close();
+                                }
                             }
                         });
-                        Thread.sleep(1000*1/20);
+                        Thread.sleep(1000*1/5);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

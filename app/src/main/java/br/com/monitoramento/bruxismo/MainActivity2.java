@@ -15,8 +15,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.net.SocketException;
 import java.net.URL;
 
 import br.com.monitoramento.bruxismo.client.GetLeitura.GetLeitura;
@@ -27,6 +31,11 @@ public class MainActivity2 extends AppCompatActivity {
     TextView btnHit;
     TextView txtJson;
     ProgressDialog pd;
+    String lText;
+    String messageStr="send";
+    int msg_length=messageStr.length();
+    private static final int UDP_SERVER_PORT = 4210;
+    private static final int MAX_UDP_DATAGRAM_LEN = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +50,61 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
 //                new JsonTask().execute("http://192.168.4.1/edit");
 //                new JsonTask().execute("http://192.168.4.1/mestrado/6");
-                new JsonTask().execute("http://192.168.4.1/mestrado/tele");
+//                new JsonTask().execute("http://192.168.4.1/mestrado/tele");
 //                new GetLeitura(MainActivity2.this);
+//                runUdpServer();
+                byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
+                byte[] message = messageStr.getBytes();
+                DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
+                DatagramSocket ds = null;
+                try{
+                    DatagramSocket s = new DatagramSocket();
+                    InetAddress local = InetAddress.getByName("192.168.4.1");
+                    DatagramPacket p = new DatagramPacket(message, msg_length,local,UDP_SERVER_PORT);
+                    s.send(p);
+                }catch (SocketException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+
+                try {
+                    ds = new DatagramSocket(UDP_SERVER_PORT);
+                    ds.receive(dp);
+                    lText = new String(dp.getData());
+                    Log.i("UDP packet received", lText);
+                    txtJson.setText(lText);
+                }catch (SocketException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }finally {
+                    if(ds != null)
+                        ds.close();
+                }
 
             }
         });
-//        runThread();
+    }
+    void runUdpServer(){
+        String lText;
+        byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
+        DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
+        DatagramSocket ds = null;
+        try {
+            ds = new DatagramSocket(UDP_SERVER_PORT);
+            ds.receive(dp);
+            lText = new String(dp.getData());
+            Log.i("UDP packet received", lText);
+            txtJson.setText(lText);
+        }catch (SocketException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            if(ds != null)
+                ds.close();
+        }
 
     }
 
