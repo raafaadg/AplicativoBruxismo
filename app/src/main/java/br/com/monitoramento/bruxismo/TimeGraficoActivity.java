@@ -39,6 +39,7 @@ import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.HttpURLConnection;
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.SocketException;
 import java.net.URL;
@@ -62,8 +63,10 @@ public class TimeGraficoActivity extends DemoBase implements
     ProgressDialog pd;
 
     String lText;
+    String messageStr="send";
+    int msg_length=messageStr.length();
     private static final int UDP_SERVER_PORT = 4210;
-    private static final int MAX_UDP_DATAGRAM_LEN = 1500;
+    private static final int MAX_UDP_DATAGRAM_LEN = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,21 +215,8 @@ public class TimeGraficoActivity extends DemoBase implements
                             public void run() {
 //                                new JsonTask().execute("http://192.168.4.1/mestrado/json3");
 //                                new GetLeitura(TimeGraficoActivity.this);
-                                byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
-                                DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
-                                DatagramSocket ds = null;
-                                try {
-                                    ds = new DatagramSocket(UDP_SERVER_PORT);
-                                    ds.receive(dp);
-                                    addEntry(Float.parseFloat(new String(dp.getData())));
-                                }catch (SocketException e){
-                                    e.printStackTrace();
-                                }catch (IOException e){
-                                    e.printStackTrace();
-                                }finally {
-                                    if(ds != null)
-                                        ds.close();
-                                }
+                                startTime = System.currentTimeMillis();
+                                getUDP();
                             }
                         });
                         Thread.sleep(1000*1/5);
@@ -238,6 +228,47 @@ public class TimeGraficoActivity extends DemoBase implements
         }.start();
     }
 
+    void getUDP(){
+        byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
+        byte[] message = messageStr.getBytes();
+        DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
+        DatagramSocket ds = null;
+
+        try {
+            ds = new DatagramSocket(UDP_SERVER_PORT);
+//            InetAddress local = InetAddress.getByName("192.168.4.1");
+//            DatagramPacket p = new DatagramPacket(message, msg_length,local,UDP_SERVER_PORT);
+//            ds.send(p);
+
+            ds.receive(dp);
+            Log.i("UDP packet received", new String(dp.getData()));
+            addEntry(Float.parseFloat(new String(dp.getData())));
+
+
+//            lText = new String(dp.getData());
+//            int index1 = lText.indexOf(":[");
+//            int index2 = lText.indexOf("]}");
+//            lText = lText.substring(index1+2,index2);
+//            String buffer = "";
+//            for(char res : lText.toCharArray()){
+//                if(res != ',')
+//                    buffer += res;
+//                else{
+//                    addEntry(Float.parseFloat(buffer));
+//                    buffer = "";
+//                }
+//            }
+            stopTime = System.currentTimeMillis();
+            elapsedTime = stopTime - startTime;
+            Log.e("Tempo Exeução", String.valueOf(elapsedTime));
+        }catch (SocketException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            ds.close();
+        }
+    }
 
 private class JsonTask extends AsyncTask<String, String, String> {
 
