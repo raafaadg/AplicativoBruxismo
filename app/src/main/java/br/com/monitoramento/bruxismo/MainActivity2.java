@@ -53,6 +53,7 @@ public class MainActivity2 extends AppCompatActivity {
 //                new JsonTask().execute("http://192.168.4.1/mestrado/tele");
 //                new GetLeitura(MainActivity2.this);
 <<<<<<< HEAD
+<<<<<<< HEAD
 //                runUdpServer();
 <<<<<<< HEAD
                 byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
@@ -89,6 +90,9 @@ public class MainActivity2 extends AppCompatActivity {
 =======
 //                runUdpServer()
 >>>>>>> parent of 25e6de4... att
+=======
+//                runUdpServer()
+>>>>>>> parent of 25e6de4... att
             pd = new ProgressDialog(MainActivity2.this);
             pd.setMessage("AGUARDE! Realizando médias da Bateria");
             pd.setCancelable(false);
@@ -105,10 +109,13 @@ public class MainActivity2 extends AppCompatActivity {
                 pd.setCancelable(false);
                 pd.show();
 <<<<<<< HEAD
+<<<<<<< HEAD
                 Long tsLong = System.currentTimeMillis();
                 Log.e("TimeStamp", tsLong.toString());
                 Log.e("TimeStamp-Date", getDate(tsLong));
 >>>>>>> 25e6de4d2ed0f6b5b2f3ca94c019a55d340eb29b
+=======
+>>>>>>> parent of 25e6de4... att
 =======
 >>>>>>> parent of 25e6de4... att
             }
