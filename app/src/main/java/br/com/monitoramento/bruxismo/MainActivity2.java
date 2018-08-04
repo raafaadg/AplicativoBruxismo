@@ -55,8 +55,12 @@ public class MainActivity2 extends AppCompatActivity {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 //                runUdpServer();
 <<<<<<< HEAD
+=======
+//                runUdpServer();
+>>>>>>> parent of 91a0f20... att
                 byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
                 byte[] message = messageStr.getBytes();
                 DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
@@ -86,6 +90,7 @@ public class MainActivity2 extends AppCompatActivity {
                     if(ds != null)
                         ds.close();
                 }
+<<<<<<< HEAD
 
 =======
 =======
@@ -125,6 +130,9 @@ public class MainActivity2 extends AppCompatActivity {
 >>>>>>> parent of 25e6de4... att
 =======
 >>>>>>> parent of 25e6de4... att
+=======
+
+>>>>>>> parent of 91a0f20... att
             }
         });
     }
