@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,9 +23,19 @@ import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.SocketException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import br.com.monitoramento.bruxismo.client.GetLeitura.GetLeitura;
 import br.com.monitoramento.bruxismo.client.GetLeitura.GetLeituraResponse;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -47,6 +58,8 @@ public class MainActivity2 extends AppCompatActivity {
         btnOff = (TextView) findViewById(R.id.btnOff);
         txtJson = (TextView) findViewById(R.id.tvJsonItem);
 
+        OkHttpClient client = new OkHttpClient();
+
         btnHit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,13 +68,27 @@ public class MainActivity2 extends AppCompatActivity {
 //                new JsonTask().execute("http://192.168.4.1/mestrado/tele");
                 new JsonTask().execute("http://192.168.4.1/mestrado/on");
 //                new GetLeitura(MainActivity2.this);
-//                runUdpServer()
+//                runUdpServer();
             pd = new ProgressDialog(MainActivity2.this);
-            pd.setMessage("AGUARDE! Realizando médias da Bateria");
+            pd.setMessage("AGUARDE! Realizando médias d" +
+                    "a Bateria");
             pd.setCancelable(false);
             pd.show();
 
+            Long tsLong = System.currentTimeMillis();
+
+
+            RequestBody formBody = new FormBody.Builder()
+                    .add("StartTimeStamp", tsLong.toString())
+                    .build();
+            Request request = new Request.Builder()
+                    .url("http://192.168.4.1/mestrado/time")
+                    .post(formBody)
+                    .build();
+
             }
+
+
         });
         btnOff.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +98,20 @@ public class MainActivity2 extends AppCompatActivity {
                 pd.setMessage("AGUARDE! Desligando GPIO4");
                 pd.setCancelable(false);
                 pd.show();
+                Long tsLong = System.currentTimeMillis();
+                Log.e("TimeStamp", tsLong.toString());
+                Log.e("TimeStamp-Date", getDate(tsLong));
             }
         });
     }
+
+    private String getDate(long time) {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(time);
+        String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", cal).toString();
+        return date;
+    }
+
     void runUdpServer(){
         byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
         byte[] message = messageStr.getBytes();
