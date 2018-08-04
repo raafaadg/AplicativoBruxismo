@@ -29,7 +29,6 @@ import br.com.monitoramento.bruxismo.client.GetLeitura.GetLeituraResponse;
 public class MainActivity2 extends AppCompatActivity {
 
     TextView btnHit;
-    TextView btnOff;
     TextView txtJson;
     ProgressDialog pd;
     String lText;
@@ -44,7 +43,6 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         btnHit = (TextView) findViewById(R.id.btnHit);
-        btnOff = (TextView) findViewById(R.id.btnOff);
         txtJson = (TextView) findViewById(R.id.tvJsonItem);
 
         btnHit.setOnClickListener(new View.OnClickListener() {
@@ -53,63 +51,59 @@ public class MainActivity2 extends AppCompatActivity {
 //                new JsonTask().execute("http://192.168.4.1/edit");
 //                new JsonTask().execute("http://192.168.4.1/mestrado/6");
 //                new JsonTask().execute("http://192.168.4.1/mestrado/tele");
-                new JsonTask().execute("http://192.168.4.1/mestrado/on");
 //                new GetLeitura(MainActivity2.this);
-//                runUdpServer()
-            pd = new ProgressDialog(MainActivity2.this);
-            pd.setMessage("AGUARDE! Realizando médias da Bateria");
-            pd.setCancelable(false);
-            pd.show();
+//                runUdpServer();
+                byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
+                byte[] message = messageStr.getBytes();
+                DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
+                DatagramSocket ds = null;
+                try{
+                    DatagramSocket s = new DatagramSocket();
+                    InetAddress local = InetAddress.getByName("192.168.4.1");
+                    DatagramPacket p = new DatagramPacket(message, msg_length,local,UDP_SERVER_PORT);
+                    s.send(p);
+                }catch (SocketException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
 
-            }
-        });
-        btnOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new JsonTask().execute("http://192.168.4.1/mestrado/off");
-                pd = new ProgressDialog(MainActivity2.this);
-                pd.setMessage("AGUARDE! Desligando GPIO4");
-                pd.setCancelable(false);
-                pd.show();
+                try {
+                    ds = new DatagramSocket(UDP_SERVER_PORT);
+                    ds.receive(dp);
+                    lText = new String(dp.getData());
+                    Log.i("UDP packet received", lText);
+                    txtJson.setText(lText);
+                }catch (SocketException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }finally {
+                    if(ds != null)
+                        ds.close();
+                }
+
             }
         });
     }
     void runUdpServer(){
+        String lText;
         byte[] lMsg = new byte[MAX_UDP_DATAGRAM_LEN];
-        byte[] message = messageStr.getBytes();
         DatagramPacket dp = new DatagramPacket(lMsg, lMsg.length);
         DatagramSocket ds = null;
-//                try{
-//                    DatagramSocket s = new DatagramSocket(UDP_SERVER_PORT);
-//                    InetAddress local = InetAddress.getByName("192.168.4.1");
-//                    DatagramPacket p = new DatagramPacket(message, msg_length,local,UDP_SERVER_PORT);
-//                    s.send(p);
-//
-//                    s.close();
-//                }catch (SocketException e){
-//                    e.printStackTrace();
-//                }catch (IOException e){
-//                    e.printStackTrace();
-//                }
-
         try {
-            //ds = new DatagramSocket(UDP_SERVER_PORT);
             ds = new DatagramSocket(UDP_SERVER_PORT);
-//                    InetAddress local = InetAddress.getByName("192.168.4.1");
-//                    DatagramPacket p = new DatagramPacket(message, msg_length,local,UDP_SERVER_PORT);
-//                    ds.send(p);
-
             ds.receive(dp);
             lText = new String(dp.getData());
             Log.i("UDP packet received", lText);
             txtJson.setText(lText);
-
         }catch (SocketException e){
             e.printStackTrace();
         }catch (IOException e){
             e.printStackTrace();
         }finally {
-            ds.close();
+            if(ds != null)
+                ds.close();
         }
 
     }
@@ -180,14 +174,13 @@ public class MainActivity2 extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
+            /*if (pd.isShowing()){
+                pd.dismiss();
+            }*/
            // int index1 = result.indexOf(":");
            // int index2 = result.indexOf("}");
            // result = result.substring(index1+1,index2);
 //            addEntry(Float.parseFloat(result));
-            if (pd.isShowing()){
-                pd.dismiss();
-            }
             txtJson.setText(result);
         }
     }
